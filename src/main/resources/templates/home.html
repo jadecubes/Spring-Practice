@@ -1,0 +1,37 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+</head>
+
+<body>
+    <h3 class="title-style">Transaction Demo</h3>
+    <ul>
+        <li class="alert alert-danger" role="alert"
+            th:each="error : ${#fields.errors('transaction.*')}" th:text="${error}" />
+    </ul>
+    <form th:action="@{/saveMsg}" method="post" class="" th:object="${transaction}">
+        <!-- name="point_amount" id="point_amount" -->
+        <input type="text" th:field="*{point_amount}"  placeholder="Fill in the amount "
+               class="" required="true"/>
+        <br><br>
+        <div class="">
+            <!-- <button class="">Submit</button> -->
+        </div><br><br>
+
+    </form>
+</body>
+
+</html>
