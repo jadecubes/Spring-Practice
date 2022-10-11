@@ -27,15 +27,17 @@ public class TaskDispatcher extends Thread{
 
                 for (String k : emp.keySet()) {
                      Processor p=emp.get(k);
-                     if (!p.isProcessing() && all.size()>0 ) {
-                         //System.out.println("\u001B[45m" +  "dispatcher: add to emp task que" + "\u001B[0m");
+                     if (!p.isOccupied() && all.size()>0 ) {
+                         System.out.println("\u001B[45m" +  "dispatcher: add to emp "+p.getName()+ " task que" + "\u001B[0m");
+                         p.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
                          tasks4junior.add(all.poll());
                      }
                  }
                  for (String k : sEmp.keySet()) {
                      Processor p=sEmp.get(k);
-                     if (!p.isProcessing() && all.size()>0 ){
-                         //System.out.println("\u001B[45m" +  "dispatcher: add to senior emp task que" + "\u001B[0m");
+                     if (!p.isOccupied() && all.size()>0 ){
+                         System.out.println("\u001B[45m" +  "dispatcher: add to senior emp task que" + "\u001B[0m");
+                         p.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
                          tasks4senior.add(all.poll());
                      }
                   }

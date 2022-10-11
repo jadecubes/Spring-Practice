@@ -20,17 +20,17 @@ public class GeneralEmpProcessor extends Processor {
             //https://jenkov.com/tutorials/java-concurrency/synchronized.html
             synchronized (GeneralEmpProcessor.class) {
                 Thread curThread=java.lang.Thread.currentThread();
-                Context context=super.getContext();
+                Context context=getContext();
                 ConcurrentLinkedQueue<Task> taskQue =context.getTasksForEmps();
 
                 if (taskQue.size() > 0) {
-                    //System.out.println("\u001B[43m" + "start... "+type +": " + curThread.getName() + " writes to db." + "\u001B[0m");
-                    super.setProcessing(true);
+                    System.out.println("\u001B[43m" + "start... "+currentThread().getName() + " writes to db." + "\u001B[0m");
+                    setState(ProcessorState.IS_PROCESSING);
                     Task t = taskQue.poll();
                     Transaction ts = new Transaction();
 
                     try {
-                        sleep((t.getProcess_cost() / 1000));
+                        sleep(t.getProcess_cost());
 
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -42,7 +42,7 @@ public class GeneralEmpProcessor extends Processor {
                     ts.setCreated_by(curThread.getName());
                     ts.setCreated_time(new Date());
                     context.getService().save(ts);
-                    super.setProcessing(false);
+                    setState(ProcessorState.IDLE);
                     System.out.println("\u001B[43m" +  "GENERAL: " + curThread.getName() + " writes to db." + "\u001B[0m");
                 }
             }

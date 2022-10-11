@@ -20,12 +20,12 @@ public class SeniorEmpProcessor extends Processor{
             //https://jenkov.com/tutorials/java-concurrency/synchronized.html
             synchronized (SeniorEmpProcessor.class) {
                 Thread curThread=java.lang.Thread.currentThread();
-                Context context=super.getContext();
+                Context context=getContext();
                 ConcurrentLinkedQueue<Task> taskQue =context.getTasksForSeniorEmps();
 
                 if (taskQue.size() > 0) {
-                    //System.out.println("\u001B[43m" + "start... "+type +": " + curThread.getName() + " writes to db." + "\u001B[0m");
-                    super.setProcessing(true);
+
+                    setState(ProcessorState.IS_PROCESSING);
                     Task t = taskQue.poll();
                     Transaction ts = new Transaction();
 
@@ -36,7 +36,7 @@ public class SeniorEmpProcessor extends Processor{
                     ts.setCreated_by(curThread.getName());
                     ts.setCreated_time(new Date());
                     context.getService().save(ts);
-                    super.setProcessing(false);
+                    setState(ProcessorState.IDLE);
                     System.out.println("\u001B[44m" +  "SENIOR: " + curThread.getName() + " writes to db." + "\u001B[0m");
                 }
             }
