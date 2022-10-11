@@ -10,7 +10,6 @@ public class Context {
     private ConcurrentLinkedQueue<Task> tasksForEmps;
     private ConcurrentLinkedQueue<Task> tasksForSeniorEmps;
     private ConcurrentLinkedQueue<Task> allTasks;
-    private ConcurrentLinkedQueue<Transaction> transactions;
     private TransactionService service;
 
     public ConcurrentHashMap<String, Processor> getEmps() {
@@ -33,9 +32,6 @@ public class Context {
         return allTasks;
     }
 
-    public ConcurrentLinkedQueue<Transaction> getTransactions() {
-        return transactions;
-    }
 
     public TransactionService getService() {
         return service;
@@ -52,7 +48,6 @@ public class Context {
         this.allTasks=allTasks;
         this.tasksForEmps=tasksForEmps;
         this.tasksForSeniorEmps=tasksForSeniorEmps;
-        this.transactions=transactions;
         this.service=service;
     }
 }

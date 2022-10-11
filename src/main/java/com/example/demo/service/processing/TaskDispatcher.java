@@ -11,6 +11,19 @@ public class TaskDispatcher extends Thread{
     public TaskDispatcher(Context context){
         this.context=context;
     }
+    public void dispatch(Map<String, Processor> processors,ConcurrentLinkedQueue<Task> sourceTasks,ConcurrentLinkedQueue<Task> destTasks){
+        for (String k : processors.keySet()) {
+            Processor p=processors.get(k);
+            if (!p.isOccupied() && sourceTasks.size()>0 ) {
+                if(p.getType()== Processor.Type.SENIOR)
+                    System.out.println("\u001B[45m" +  "dispatch to SENIOR: "+p.getName()+ " task que" + "\u001B[0m");
+                else
+                    System.out.println("\u001B[45m" +  "dispatch to GENERAL: "+p.getName()+ " task que" + "\u001B[0m");
+                p.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
+                destTasks.add(sourceTasks.poll());
+            }
+        }
+    }
     public void run() {
         while(true){
             try {
@@ -21,27 +34,11 @@ public class TaskDispatcher extends Thread{
             synchronized (TaskDispatcher.class) {
                 Map<String, Processor> sEmp = context.getSeniorEmps();
                 Map<String, Processor> emp = context.getEmps();
-                Collection tasks4senior = context.getTasksForSeniorEmps();
-                Collection tasks4junior = context.getTasksForEmps();
+                ConcurrentLinkedQueue tasks4senior = context.getTasksForSeniorEmps();
+                ConcurrentLinkedQueue tasks4junior = context.getTasksForEmps();
                 ConcurrentLinkedQueue all=context.getAllTasks();
-
-                for (String k : emp.keySet()) {
-                     Processor p=emp.get(k);
-                     if (!p.isOccupied() && all.size()>0 ) {
-                         System.out.println("\u001B[45m" +  "dispatcher: add to emp "+p.getName()+ " task que" + "\u001B[0m");
-                         p.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
-                         tasks4junior.add(all.poll());
-                     }
-                 }
-                 for (String k : sEmp.keySet()) {
-                     Processor p=sEmp.get(k);
-                     if (!p.isOccupied() && all.size()>0 ){
-                         System.out.println("\u001B[45m" +  "dispatcher: add to senior emp task que" + "\u001B[0m");
-                         p.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
-                         tasks4senior.add(all.poll());
-                     }
-                  }
-
+                dispatch(emp,all,tasks4junior);
+                dispatch(sEmp,all,tasks4senior);
             }
         }
     }

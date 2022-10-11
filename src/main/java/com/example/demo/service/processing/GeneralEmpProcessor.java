@@ -6,9 +6,7 @@ import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class GeneralEmpProcessor extends Processor {
-    public GeneralEmpProcessor(Context context){
-        super( context,  Type.GENERAL);
-    }
+    public GeneralEmpProcessor(Context context){initProcessor( context,  Type.GENERAL);}
     @Override
     public void run() {
         while (true) {
@@ -19,32 +17,9 @@ public class GeneralEmpProcessor extends Processor {
             }
             //https://jenkov.com/tutorials/java-concurrency/synchronized.html
             synchronized (GeneralEmpProcessor.class) {
-                Thread curThread=java.lang.Thread.currentThread();
                 Context context=getContext();
                 ConcurrentLinkedQueue<Task> taskQue =context.getTasksForEmps();
-
-                if (taskQue.size() > 0) {
-                    System.out.println("\u001B[43m" + "start... "+currentThread().getName() + " writes to db." + "\u001B[0m");
-                    setState(ProcessorState.IS_PROCESSING);
-                    Task t = taskQue.poll();
-                    Transaction ts = new Transaction();
-
-                    try {
-                        sleep(t.getProcess_cost());
-
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    ts.setBusiness_time(t.getBusiness_time());
-                    ts.setTransaction_id(t.getTransaction_id());
-                    ts.setPoint_amount(t.getPoint_amount());
-                    ts.setProcess_cost(t.getProcess_cost());
-                    ts.setCreated_by(curThread.getName());
-                    ts.setCreated_time(new Date());
-                    context.getService().save(ts);
-                    setState(ProcessorState.IDLE);
-                    System.out.println("\u001B[43m" +  "GENERAL: " + curThread.getName() + " writes to db." + "\u001B[0m");
-                }
+                process(taskQue);
             }
         }
     }

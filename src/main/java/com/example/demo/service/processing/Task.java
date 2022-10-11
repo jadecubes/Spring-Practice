@@ -12,12 +12,13 @@ public class Task {
     private String transaction_id;
     private Date business_time;
     private Integer process_cost;
-
+    private String processor_name;
      public Task(Integer point_amount){
          this.point_amount=point_amount;
          this.transaction_id= UUID.randomUUID().toString().replace("-", "");
          this.process_cost=point_amount*getRandomNumberUsingNextInt(300,500);
          this.business_time=new Date();
+         this.processor_name="";
      }
     private int getRandomNumberUsingNextInt(int min, int max) {
         Random random = new Random();
@@ -34,6 +35,14 @@ public class Task {
 
     public Date getBusiness_time() {
         return business_time;
+    }
+
+    public String getProcessor_name() {
+        return processor_name;
+    }
+
+    public void setProcessor_name(String processor_name) {
+        this.processor_name = processor_name;
     }
 
     public Integer getProcess_cost() {
