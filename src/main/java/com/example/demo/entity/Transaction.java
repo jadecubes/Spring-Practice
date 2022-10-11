@@ -1,4 +1,5 @@
 package com.example.demo.entity;
+import com.example.demo.service.processing.Task;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -65,5 +66,14 @@ public class Transaction {
 
     public void setCreated_time(Date created_time) {
         this.created_time = created_time;
+    }
+
+    public void setValues(Task t){
+        setBusiness_time(t.getBusiness_time());
+        setTransaction_id(t.getTransaction_id());
+        setPoint_amount(t.getPoint_amount());
+        setProcess_cost(t.getProcess_cost());
+        setCreated_by(t.getProcessor_name());
+        setCreated_time(new Date());
     }
 }
