@@ -10,7 +10,8 @@ import java.time.Instant;
 import java.util.Date;
 
 @Entity
-@Table(name = "Transaction")
+@Table(name = "Transaction",
+       indexes = {@Index (name="created_by_idx",columnList = "created_by ASC",unique = false)})
 
 //https://stackoverflow.com/questions/3805584/please-explain-about-insertable-false-and-updatable-false-in-reference-to-the-jp
 //https://iter01.com/599269.html

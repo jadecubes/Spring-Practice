@@ -32,6 +32,8 @@ public class TaskDispatcher extends Thread{
                 throw new RuntimeException(e);
             }
             synchronized (TaskDispatcher.class) {
+                if(context==null) break;
+
                 Map<String, Processor> sEmp = context.getSeniorEmps();
                 Map<String, Processor> emp = context.getEmps();
                 ConcurrentLinkedQueue tasks4senior = context.getTasksForSeniorEmps();

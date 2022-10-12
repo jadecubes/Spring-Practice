@@ -20,6 +20,8 @@ public class SeniorEmpProcessor extends Processor{
             //https://jenkov.com/tutorials/java-concurrency/synchronized.html
             synchronized (SeniorEmpProcessor.class) {
                 Context context=getContext();
+                if(context==null) break;
+
                 ConcurrentLinkedQueue<Task> taskQue =context.getTasksForSeniorEmps();
                 process(taskQue);
             }

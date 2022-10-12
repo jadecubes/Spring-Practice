@@ -18,6 +18,8 @@ public class GeneralEmpProcessor extends Processor {
             //https://jenkov.com/tutorials/java-concurrency/synchronized.html
             synchronized (GeneralEmpProcessor.class) {
                 Context context=getContext();
+                if(context==null) break;
+
                 ConcurrentLinkedQueue<Task> taskQue =context.getTasksForEmps();
                 process(taskQue);
             }

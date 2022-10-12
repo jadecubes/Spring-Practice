@@ -22,11 +22,12 @@ public class Processor extends Thread {
 
         return type;
     }
-    public Processor(){}
-
-    public Processor(Context context, Type type) {
-        initProcessor(context,type);
+    public Processor(){
+        context=null;
+        state = ProcessorState.IDLE;
+        type=Type.GENERAL;
     }
+
     public void initProcessor(Context context,Type type){
         this.context = context;
         state = ProcessorState.IDLE;
@@ -40,11 +41,17 @@ public class Processor extends Thread {
         this.state = state;
     }
 
+    public ProcessorState getProcessorState() {
+        return state;
+    }
+
     public Context getContext() {
         return context;
     }
     public void process(ConcurrentLinkedQueue<Task> taskQue){
         if (taskQue.size() > 0) {
+            if(context==null || context.getService()==null) return;
+
             if(type==Type.GENERAL)
                 System.out.println("\u001B[43m" + "GENERAL: "  + currentThread().getName() + " starts writing." + "\u001B[0m");
             else
@@ -62,6 +69,7 @@ public class Processor extends Thread {
             t.setProcessor_name(currentThread().getName());
             ts.setValues(t);
             context.getService().save(ts);
+
             setState(ProcessorState.IDLE);
             if(type==Type.GENERAL)
                 System.out.println("\u001B[43m" + "GENERAL: "  + currentThread().getName() + " writes to db." + "\u001B[0m");
@@ -69,7 +77,7 @@ public class Processor extends Thread {
                 System.out.println("\u001B[44m" + "SENIOR: "  + currentThread().getName() + " writes to db." + "\u001B[0m");
         }
     }
-    public int sleepTime(Task t) throws InterruptedException {
+    public int sleepTime(Task t) {
         if(type==Type.GENERAL)
             return (t.getProcess_cost());
         else

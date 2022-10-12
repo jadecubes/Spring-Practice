@@ -34,9 +34,9 @@ public class ProcessorServiceImpl implements ProcessorService{
         Context context=new Context(allTasks,tasksForEmps,tasksForSeniorEmps,emps,seniorEmps,service);
         taskDispather=new TaskDispatcher(context);
 
-        //senior: Debra
+        //senior: Jadecubes
         SeniorEmpProcessor senior=new SeniorEmpProcessor(context);
-        senior.setName("Debra");
+        senior.setName("Jadecubes");
         seniorEmps.put(senior.getName(),senior);
         senior.start();
 
@@ -58,6 +58,7 @@ public class ProcessorServiceImpl implements ProcessorService{
 
     @Override
     public void processTask(Task task) {
+        if(task==null) return;
         allTasks.add(task);
     }
 
