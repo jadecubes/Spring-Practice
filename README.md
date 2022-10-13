@@ -73,7 +73,7 @@ entity
 ## Running Project
 1. Pull code in this main branch to your local env
 2. Use IntelliJ IDEA to create an empty project
-3. in this empty project, 
+3. In this empty project, 
 ```
 File > New > Project from Existing Sources...
 ```
