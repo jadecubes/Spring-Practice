@@ -72,27 +72,26 @@ entity
 
 ## Running Project
 1. Pull code in this main branch to your local env
-2. Use IntelliJ IDEA to create an empty project
-3. In this empty project, 
+2. Use IntelliJ IDEA to specify the root folder of the pulled code.
 ```
 File > New > Project from Existing Sources...
 ```
-select the pulled code folder 
-4. Select Import project from external model > Maven 
-5. Now the source code and unit tests are imported
-6. To run the web application, 
+select the pulled code root folder 
+3. In Import project from external model, select Maven 
+4. Now the source code and unit tests are imported
+5. To run the web application, 
 ```
 select DemoApplication.java in src/main/java/com/example/demo > right click mouse menu > Run 'DemoApplication'
 ```
-7. To run all unit tests,
+6. To run all unit tests,
 ```
 select src/test/java > right click mouse menu > Run 'All Tests' With Coverage'
 ```
-8. After running the web application, use Postman to send post request to test the web API.
+7. After running the web application, use Postman to send post request to test the web API.
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/postman.png)
 
-9. Check H2 in [http://http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
+8. Check H2 in [http://http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/h2.png)
 
