@@ -70,7 +70,7 @@ public class Processor extends Thread {
             ts.setValues(t);
             context.getService().save(ts);
 
-            setState(ProcessorState.IDLE);
+            state=ProcessorState.IDLE;
             if(type==Type.GENERAL)
                 System.out.println("\u001B[43m" + "GENERAL: "  + currentThread().getName() + " writes to db." + "\u001B[0m");
             else
