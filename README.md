@@ -63,7 +63,7 @@ service
             +--- Task.java: saves data from controllers and it's handed over to processors.
             +--- TaskDispatcher.java: dispatches data in all-tasks queue to SeniorEmpProcessor's and GeneralEmProcessor's job queues.
 ```
-Main idea shows below.
+Main idea is illustrated below.
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/design.png)
 
