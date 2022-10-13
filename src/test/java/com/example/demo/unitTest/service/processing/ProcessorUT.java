@@ -69,6 +69,7 @@ public class ProcessorUT {
     public void test_process(){
         ConcurrentLinkedQueue<Task> que=new ConcurrentLinkedQueue<>();
         que.add(new Task(4));
+        processor.setState(Processor.ProcessorState.SCHEDULED_TO_PROCCESS);
         processor.process(que);
         if(service==null)
             assertEquals(que.size(),1);
