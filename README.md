@@ -86,7 +86,7 @@ select DemoApplication.java in src/main/java/com/example/demo > right click mous
 ```
 7. To run all unit tests,
 ```
-select DemoApplicationTests.java in src/test/java/com/example/demo > right click mouse menu > Run 'DemoApplicationTests'
+select src/test/java > right click mouse menu > Run 'All Tests' With Coverage'
 ```
 8. After running the web application, use Postman to send post request to test the web API.
 
