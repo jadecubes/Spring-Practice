@@ -50,7 +50,7 @@ dao
 entity
   +--- Transaction.java: defines the type saved in repository
  
- service
+service
    +--- TransactionService.java: used by business layer to save data 
    +--- TransactionServiceImpl.java: implementation of TransactionService.java
    +--- procession
@@ -77,8 +77,11 @@ entity
 File > New > Project from Existing Sources...
 ```
 select the pulled code root folder 
-3. In Import project from external model, select Maven 
+
+3. In Import Project window, select Maven > Create
+
 4. Now the source code and unit tests are imported
+
 5. To run the web application, 
 ```
 select DemoApplication.java in src/main/java/com/example/demo > right click mouse menu > Run 'DemoApplication'
