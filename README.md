@@ -1,5 +1,5 @@
 # Spring-Practice
-## Practice Goal
+## Practice Goals
 1. Create a Spring Boot 2 web application
 2. JDK version >= 1.8
 3. Apply Maven to manage the project
