@@ -40,7 +40,7 @@ in src/main/java/com/example/demo,
 
 ```
 controller
-    +--- DataExchange.java: parse data stuffed in rest api calls
+    +--- DataExchange.java: parses data stuffed in rest api calls
     +--- GlobalExceptionController.java: handles any exceptions caused in this project
     +--- TransactionRestController.java: receives data from rest api calls and calls corresponding data processing apis
 
@@ -63,6 +63,11 @@ service
             +--- Task.java: saves data from controllers and it's handed over to processors.
             +--- TaskDispatcher.java: dispatches data in all-tasks queue to SeniorEmpProcessor's and GeneralEmProcessor's job queues.
 ```
+Main idea shows below.
+
+![image](https://github.com/jadecubes/Spring-Practice/blob/main/design.png)
+
+
 ## Software Installation
 1. IntelliJ IDEA Community Edition 2022.2.3
 2. JDK 17
