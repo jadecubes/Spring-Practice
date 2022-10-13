@@ -89,8 +89,11 @@ select DemoApplication.java in src/main/java/com/example/demo > right click mous
 select DemoApplicationTests.java in src/test/java/com/example/demo > right click mouse menu > Run 'DemoApplicationTests'
 ```
 8. After running the web application, use Postman to send post request to test the web API.
+
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/postman.png)
-9. Check H2.
+
+9. Check H2 in [http://http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
+
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/h2.png)
 
 ## License
