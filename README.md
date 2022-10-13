@@ -71,15 +71,18 @@ service
 5. Postman
 
 ## Running Project
-1. Pull code in this main branch to your local env
+1. Pull code in this master branch to your local env
 2. Use IntelliJ IDEA to create an empty project
-3. in this empty project, 
+3. In this empty project, 
 ```
 File > New > Project from Existing Sources...
 ```
-select the pulled code folder 
+select the pulled code root folder 
+
 4. Select Import project from external model > Maven 
+
 5. Now the source code and unit tests are imported
+
 6. To run the web application, 
 ```
 select DemoApplication.java in src/main/java/com/example/demo > right click mouse menu > Run 'DemoApplication'
