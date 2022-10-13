@@ -90,7 +90,7 @@ select DemoApplication.java in src/main/java/com/example/demo > right click mous
 ```
 select src/test/java > right click mouse menu > Run 'All Tests' With Coverage'
 ```
-7. After running the web application, use Postman to send post request to test the web API.
+7. After running the web application, use Postman to send post requests to test the web API.
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/postman.png)
 
