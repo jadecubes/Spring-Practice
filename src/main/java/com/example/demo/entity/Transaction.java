@@ -21,25 +21,25 @@ public class Transaction {
     @Column(name = "transaction_id",updatable = false, nullable = false, insertable = true, unique = true, columnDefinition = "CHAR(32) NOT NULL UNIQUE")
     private String transaction_id;
 
-    @Column(name = "point_amount",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "INTEGER NOT NULL")
+    @Column(name = "point_amount",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "INTEGER")
     @Min(value = 1, message = "point_amount >=1")
     @Max(value = 10, message = "point_amount <=10")
     private Integer point_amount;
 
-    @Column(name = "business_time",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "DATE NOT NULL")
+    @Column(name = "business_time",updatable = false, nullable = false, insertable = true, unique = false)
     @Temporal(TemporalType.TIMESTAMP)
     @Past()
     private Date business_time;
 
-    @Column(name = "process_cost",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "INTEGER NOT NULL")
+    @Column(name = "process_cost",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "INTEGER")
     @Min(value = 300, message = "process_cost >=300")
     @Max(value = 5000, message = "process_cost <=5000")
     private Integer process_cost;
 
-    @Column(name = "created_by",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition= "VARCHAR(60) NOT NULL")
+    @Column(name = "created_by",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition= "VARCHAR(60)")
     private String created_by;
 
-    @Column(name = "created_time",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "DATE NOT NULL")
+    @Column(name = "created_time",updatable = false, nullable = false, insertable = true, unique = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created_time;
 
