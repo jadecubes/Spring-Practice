@@ -27,7 +27,6 @@ public class Transaction {
     private Integer point_amount;
 
     @Column(name = "business_time",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "DATE NOT NULL")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     @Past()
     private Date business_time;
@@ -41,7 +40,6 @@ public class Transaction {
     private String created_by;
 
     @Column(name = "created_time",updatable = false, nullable = false, insertable = true, unique = false, columnDefinition = "DATE NOT NULL")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created_time;
 
