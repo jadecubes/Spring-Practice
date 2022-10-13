@@ -48,13 +48,13 @@ dao
   +--- TransactionRepository.java: ORM interface for the repository
 
 entity
-  +--- Transaction.java: define the type saved in repository
+  +--- Transaction.java: defines the type saved in repository
  
  service
    +--- TransactionService.java: used by business layer to save data 
    +--- TransactionServiceImpl.java: implementation of TransactionService.java
    +--- procession
-            +--- Context.java: processors uses context to dispatch and do tasks in job queues
+            +--- Context.java: a processor uses context to dispatch and do tasks in job queues
             +--- GeneralEmpProcessor.java: a type of processor and all GeneralEmpProcessors take tasks from one job queue
             +--- Processor.java: defines a processor's job, state and type
             +--- ProcessorService.java: defines processor's service
