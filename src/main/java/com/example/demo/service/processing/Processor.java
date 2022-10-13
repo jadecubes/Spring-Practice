@@ -50,14 +50,14 @@ public class Processor extends Thread {
     }
     public void process(ConcurrentLinkedQueue<Task> taskQue){
         if (taskQue.size() > 0) {
-            if(context==null || context.getService()==null) return;
+            if(context==null || context.getService()==null || state!=ProcessorState.SCHEDULED_TO_PROCCESS) return;
 
             if(type==Type.GENERAL)
                 System.out.println("\u001B[43m" + "GENERAL: "  + currentThread().getName() + " starts writing." + "\u001B[0m");
             else
                 System.out.println("\u001B[44m" + "SENIOR: "  + currentThread().getName() + " starts writing." + "\u001B[0m");
 
-            setState(ProcessorState.IS_PROCESSING);
+            state=ProcessorState.IS_PROCESSING;
             Task t = taskQue.poll();
             Transaction ts = new Transaction();
 
