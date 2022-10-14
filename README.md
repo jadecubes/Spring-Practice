@@ -100,7 +100,7 @@ select src/test/java > right click mouse menu > Run 'All Tests' With Coverage'
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/postman.png)
 
-9. Check H2 in [http://http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
+9. Check H2 in [http://localhost:8080/h2-console/](http://localhost:8080/h2-console/)
 
 ![image](https://github.com/jadecubes/Spring-Practice/blob/main/h2.png)
 
