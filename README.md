@@ -8,7 +8,7 @@
 6. Unittest code coverage >= 60%
 
 
-## User Scinario
+## User Scenario
 1. Develop an API to allow user to add a trasaction. Data consistency must be checked.
 
 ### Requirements
